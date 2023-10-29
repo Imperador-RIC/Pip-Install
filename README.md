@@ -27,3 +27,7 @@ The program is theoretically compatible with the 10 most famous package managers
 To install the tool, run the install.sh installation script using the `./install.sh` command.
 
 Then you can run the `pip-install` command to use the script, or, you can run the tool passing some argument that is the name of a dependency file, if the standard naming convention used by the community is not used, called requirements.
+
+## Limitation
+
+The program cannot select specific versions of dependencies, it will always install the most recent version of dependencies available.
