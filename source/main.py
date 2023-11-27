@@ -35,7 +35,7 @@ if geteuid () == 0:
 
                     for package in file:
 
-                        package = match (r'^[a-zA-Z0-9]+', package)
+                        package = match (r'^[a-zA-Z0-9-]+', package)
                         subprocess.run (f'{package_manager} {syntax} python3-{package.group (0)}', shell = True)
 
                     file.close ()
