@@ -46,7 +46,8 @@ if geteuid () == 0:
                 exit ()
 
         except subprocess.SubprocessError:
-            pass
+            print ('Error: No compatible package managers were found')
+            exit ()
 
 else:
     print ('Error: Run the tool with administrator privileges')
