@@ -8,13 +8,13 @@ This script is used to install all the dependencies from a requirements file, th
 
 This process of installing dependencies without our script could be very time-consuming, as it would be necessary to write a command, or multiple commands, to install all the dependencies of a given program.
 
+To find out if pip is limited in your operating system, just try to install some dependency using it, if a message similar to `error: externally-managed-environment`, it means that your system is focused on stability and your pip is limited to ensure the proper functioning of your system.
+
 ## Program operation
 
-The program's operation is simple, it first checks whether the user is running as an administrator or not.
+The program basically imitates pip syntax, but adapts it to use the native package manager of the operating system it is running.
 
-After that, it checks which package manager the system has.
-
-And finally, it generates a command to install each dependency listed in the requirements file and executes it until all dependencies are installed.
+The program has the installation, uninstallation, and freeze function, despite being technically useless, as this function works perfectly even in limited environments.
 
 ## Compatibility
 
@@ -26,8 +26,10 @@ The program is theoretically compatible with the 10 most famous package managers
 
 To install the tool, run the install.sh installation script using the `./install.sh` command.
 
-Then you can run the `pip-install` command to use the script, or, you can run the tool passing some argument that is the name of a dependency file, if the standard naming convention used by the community is not used, called requirements.
+Then you can run the `pip-i` command followed by the install or uninstall parameter to install or uninstall a package or list of packages, if you enter the name of a dependency file such as "requirements.txt", the program will read and install or uninstall the packages listed in the file.
 
 ## Limitation
 
 The program cannot select specific versions of dependencies, it will always install the most recent version of dependencies available.
+
+Remember, if your operating system limits the functioning of pip it is because there is a reason behind it, use this tool wisely and only if necessary, after all, this tool is nothing more than a temporary and inadequate solution to a common problem, Use at your own risk and wisely.
