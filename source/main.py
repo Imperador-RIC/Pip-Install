@@ -1,19 +1,22 @@
 #!/usr/bin/env python3
 
 # IMPORTING LIBRARIES AND DEPENDENCIES
+
 import argparse, subprocess
 from os import geteuid
 from re import match
 
 # PROGRAM ARGUMENT HANDLING
+
 parser = argparse.ArgumentParser (prog = 'PIP-Install', usage = 'pip-i [install | uninstall] [packages | filename]')
 
 parser.add_argument ('action', choices = ['install', 'uninstall', 'freeze'], default = 'install', nargs = 1)
 parser.add_argument ('packages', default = 'requirements.txt', nargs = '*')
 
-args = parser.parse_args()
+args = parser.parse_args ()
 
 # INTERNAL FUNCTION OF THE PROGRAM
+
 def check (list_program: list) -> (str | None):
     """Function that checks if a binary is installed on the system and returns its name if it is installed, otherwise, returns None"""
 
@@ -23,11 +26,13 @@ def check (list_program: list) -> (str | None):
         except (subprocess.SubprocessError): pass
 
 # LIST OF SUPPORTED PACKAGE MANAGERS
+
 class Managers:
     PACKAGE = ['apk', 'apt', 'apt-get', 'dnf', 'emerge', 'pacman', 'pkg', 'yay', 'yum', 'zypper', None]
     PIP = ['pip3', 'pip', None]
 
 # PROGRAM EXECUTION
+
 def main ():
 
     if args.action == ['install'] or args.action == ['uninstall']:
@@ -43,12 +48,14 @@ def main ():
             else:
 
                 if args.action == ['install']:
+
                     if package_manager == 'apk': syntax = 'add --no-cache'
                     elif package_manager == 'emerge': syntax = '-a'
                     elif package_manager == 'pacman' or package_manager == 'yay': syntax = '-S --noconfirm'
                     else: syntax = 'install -y'
 
                 else:
+
                     if package_manager == 'apk': syntax = 'del -y'
                     elif package_manager == 'emerge': syntax = '-C'
                     elif package_manager == 'pacman': syntax = '-R --noconfirm'
@@ -88,7 +95,7 @@ def main ():
             exit ()
 
         else:
-            subprocess.run(f'{package_manager} freeze', shell = True)
+            subprocess.run (f'{package_manager} freeze', shell = True)
             exit ()
 
 if __name__ == '__main__':
